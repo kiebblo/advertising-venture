@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const productCartSchema = new mongoose.Schema({
+const shoppingCartSchema = new mongoose.Schema({
     quantityPurchase: { type: Number, default: 1 },
     idUser: {
         type: mongoose.Schema.Types.ObjectId,
@@ -13,10 +13,8 @@ const productCartSchema = new mongoose.Schema({
         required: true
     }
 },
-    {
-        timestamps: true
-    }
+    { timestamps: true }
 );
 
-const ProductCart = mongoose.Model("ProductCart", productCartSchema);
-module.exports = ProductCart;
+const ShoppingCart = mongoose.model("ShoppingCart", shoppingCartSchema);
+module.exports = ShoppingCart;
