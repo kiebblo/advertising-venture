@@ -75,7 +75,7 @@ exports.updateAdvertisement = async (req, res) => {
         advertisement.productName = req.body.productName;
         advertisement.description = req.body.description;
         advertisement.price = req.body.price;
-        advertisement.qtyAvailable = req.body.qtyAvailable;
+        advertisement.quantityAvailable = req.body.quantityAvailable;
         await advertisement.save();
         res.json(advertisement);
     } catch (error) {
