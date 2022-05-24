@@ -5,7 +5,7 @@ exports.createAdvertisement = async (req, res) => {
     try {
         req.body.idUser = req.payload.id;
         req.body.photo = `uploads/${req.file.filename}`;
-        let advertisement = Advertisement.create(req.body);
+        let advertisement = await Advertisement.create(req.body);
         res.status(201).json(advertisement);
     } catch (error) {
         res.status(500).json(error.message);
@@ -35,7 +35,7 @@ exports.getAdvertisementsById = async (req, res) => {
 
 exports.getAdvertisementsByUser = async (req, res) => {
     try {
-        let advertisement = await Advertisement.find().where("idClient").equals(req.payload.id);
+        let advertisement = await Advertisement.find().where("idUser").equals(req.payload.id);
         res.json(advertisement);
     } catch (error) {
         res.status(500).json(error.message);
@@ -48,7 +48,7 @@ exports.deleteAdvertisement = async (req, res) => {
         if (!advertisement) {
             return res.status(404).json("This advertisement does not exist!");
         }
-        if (advertisement.idClient != req.payload.id) {
+        if (advertisement.idUser != req.payload.id) {
             return res.status(401).json("You dont have the permissions to delete this advertisement")
         }
         await advertisement.remove();
@@ -65,7 +65,7 @@ exports.updateAdvertisement = async (req, res) => {
         if (!advertisement) {
             return res.status(404).json("This advertisement does not exist!");
         }
-        if (advertisement.idClient != req.payload.id) {
+        if (advertisement.idUser != req.payload.id) {
             return res.status(401).json("You dont have the permissions to update this advertisement")
         }
         if (req.file) {

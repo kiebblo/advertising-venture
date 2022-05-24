@@ -5,7 +5,7 @@ const AdvertisementController = require("../controller/AdvertisementController")
 const auth = require("../middleware/auth");
 const multer = require("../middleware/multer-config");
 
-router.post("/", auth, AdvertisementController.createAdvertisement);
+router.post("/", auth, multer, AdvertisementController.createAdvertisement);
 router.get("/", AdvertisementController.getAdvertisements);
 router.get("/userAdvertisements", auth, AdvertisementController.getAdvertisementsByUser);
 
