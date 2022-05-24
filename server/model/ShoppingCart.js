@@ -7,9 +7,9 @@ const shoppingCartSchema = new mongoose.Schema({
         ref: "User",
         required: true
     },
-    idAdvertisemet: {
+    idAdvertisement: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
+        ref: "Advertisement",
         required: true
     }
 },
