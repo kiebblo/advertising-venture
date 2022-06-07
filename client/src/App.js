@@ -1,8 +1,8 @@
 import React from 'react';
 import { Routes, Route } from "react-router-dom";
-import Connection from './pages/Connection';
-import Home from './pages/Home';
-import Registration from './pages/Registration';
+import Connection from './pages/connection/Connection';
+import Home from './pages/home/Home';
+import Registration from './pages/registration/Registration';
 
 export default function App() {
   return (
