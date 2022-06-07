@@ -33,11 +33,11 @@ export default function Registration() {
         </div>
         <br />
         <div>
-          <input type='text' placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)}/>
+          <input type='text' autoComplete='username' placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)}/>
         </div>
         <br />
         <div>
-          <input type='password' placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)}/>
+          <input type='password' autoComplete='new-password' placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)}/>
         </div>
         <br />
         <button>Register</button>
