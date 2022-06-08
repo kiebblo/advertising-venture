@@ -1,7 +1,7 @@
-import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-//import AuthContext from '../../components/context/AuthContext';
+import axios from 'axios';
+import AuthContext from '../../components/context/AuthContext';
 import Loader from '../../components/loader/Loader';
 import MessageError from '../../components/errorMsg/MessageError';
 
@@ -11,7 +11,7 @@ export default function Connection() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
-  //const { setToken } = useContext(AuthContext);
+  const { setToken } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -20,12 +20,13 @@ export default function Connection() {
     setError(false);
 
     const user = { email, password };
+    setLoading(true);
 
     axios
       .post("/api/user/login", user)
       .then((res) => {
         localStorage.setItem("token", res.data);
-        //setToken(res.data);
+        setToken(res.data);
         navigate("/");
       })
       .catch(() => setError(true))
