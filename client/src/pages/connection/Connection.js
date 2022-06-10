@@ -23,7 +23,7 @@ export default function Connection() {
     setLoading(true);
 
     axios
-      .post("/api/user/login", user)
+      .post("http://localhost:5000/api/user/login", user)
       .then((res) => {
         localStorage.setItem("token", res.data);
         setToken(res.data);
