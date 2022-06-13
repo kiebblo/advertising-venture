@@ -1,6 +1,6 @@
-import axios from 'axios';
 import React, { useState } from 'react';
-import { Navigate } from 'react-router-dom';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export default function Registration() {
 
@@ -9,15 +9,16 @@ export default function Registration() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const user = { name, lastname, email, password };
     axios
-      .post("/api/user/signup", user)
-      .then((res) => Navigate("/connection"))
+      .post("http://localhost:5000/api/user/signup", user)
+      .then((res) => navigate("/connection"))
       .catch((error) => console.log(error.message));
-
   };
 
   return (
